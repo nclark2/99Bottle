@@ -31,7 +31,7 @@ This is a Predicate which ends in a question mark, returning <b>Boolean</b> that
 =end
 
 def empty?()
-	@count = 0
+	@count == 0
 end
 
 
@@ -40,12 +40,18 @@ This method sings (prints) exactly one verse at a time. Since it is destructive,
 =end
 
 def sing_one_verse!()
-	if @count = 1
-	puts "#{@count} bottle of beer on the wall, #{@count} bottle 		of beer.\nTake one down, pass it around, no more bottles of 		beer on the wall."
+if @count > 2
+puts @count.to_s + " bottles of beer on the wall, " + @count.to_s + " bottles of beer.\nTake one down, pass it around, " + take_one_down!().to_s + " bottles of beer on the wall."
 	
-	else
-	puts "#{@count} bottles of beer on the wall, #{@count} bottles 		of beer.\nTake one down, pass it around, " + take_one_down()
-	end
+else
+if @count == 2
+puts @count.to_s + " bottles of beer on the wall, " + @count.to_s + " bottles of beer,\nTake one down, pass it around, " + take_one_down!().to_s + " bottle of beer on the wall." 	
+
+else
+puts @count.to_s + " bottle of beer on the wall, " + @count.to_s + " bottle of beer,\nTake one down, pass it around, no more bottles of beer on the wall."	
+take_one_down!()	
+end
+end
 end
 
 
@@ -57,7 +63,6 @@ Destructive method named with a bang. Decrements the number of bottles count. It
 
 def take_one_down!()
 	@count = (@count-1)
-	puts "#{@count} botles of beer on the wall."
 end
 end
 #=========================End code=====================================
